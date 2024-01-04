@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 어떤 설계도를 쓸건지 불러오는 선언. 같은 위치니까 파일 이름만 적어줌 -->
+<!DOCTYPE booklist SYSTEM "test2.dtd">
+
+<!-- <books></books> booklist로 해야한다. 이젠 내맘대로 못 함-->
+<booklist>
+	<book>
+		<title>노인과 바다</title>
+		<author>헤밍웨이</author>
+		<author>홍길동</author>
+		<pub>a출판사</pub>
+		<coverImg />
+	</book>
+</booklist>

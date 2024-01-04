@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax 원리</title>
+<!--자바코드 없이 클라이언트 기술로 모든 것 해결-->
+<script>
+	let httpRequest = null;
+	
+	function fnSubmit(){
+		httpRequest = new XMLHttpRequest();
+		let name = document.getElementById("name").value;
+		
+		httpRequest.open("GET","basic01.jsp?name=" + name, true); // jsp(서버)에 요청해서 연결이 들어가는 과정
+		httpRequest.onreadystatechange = fnCallback;
+		httpRequest.send(null); // 이 함수를 호출해야 보내는 거다
+	}
+	
+	// 어떤 일을 할건지 무명함수를 만든다
+	function fnCallback(){
+		alert(httpRequest.readyState);
+		
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				let data = httpRequest.responseText;	// 서버로부터 데이터를 받아옴
+				let div = document.getElementById("display");
+				div.innerHTML = data;				
+			}
+			else{
+				alert("무언가 잘못되었음 : " + httpRequest.status);
+			}
+		}
+	}
+	
+</script>
+</head>
+<body>
+	<input type="text" name="name" id="name" />
+	<input type="button" value="전송" onclick="fnSubmit()" />
+	<hr>
+	<div id="display" ></div>
+</body>
+</html>

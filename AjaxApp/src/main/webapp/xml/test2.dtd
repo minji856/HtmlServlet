@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+			<!-- book 여러개 만들어도 된다 -->
+<!ELEMENT booklist (book+) >		 <!-- 택1 -->
+	<!ELEMENT book (title, author+, (publisher|pub), coverImg) >
+		<!ELEMENT title (#PCDATA) >
+		<!ELEMENT author (#PCDATA) >
+		<!ELEMENT publisher (#PCDATA) >
+		<!ELEMENT pub (#PCDATA) >
+		<!ELEMENT coverImg EMPTY > <!-- 이미지는 src로 하니까 문자열 필요가 없음 -->
