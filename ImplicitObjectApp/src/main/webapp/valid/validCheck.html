@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ValidCheck.html</title>
+<script>
+	// 값이 비었는지 안 비었는지 확인하는 함수 obj가 잘 넘어오는지 확인
+	function isEmpty(obj, msg){
+		// console.log(obj.irum.value);
+		// obj.irum.value 였는데 이름을 정해줬으니 지움
+		if(obj.value == "" || obj.value == null){
+			alert(msg + "를 입력해 주세요.")
+			return false; // 서버로 보내는거 아니니까 fasle로 막아주기
+		}		
+		else{
+		return true;
+		}
+	}
+	
+	// form 태그 안 모든것들은 다 받아옴. 숫자거나 문자거나 다 검사가능
+	function fnChecked(obj){
+		if(!isEmpty(obj.irum, "이름")){
+			return false;
+		}
+		if(!isEmpty(obj.id, "아이디")){
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<form action="validCheck.jsp" method="post" name="f1"
+		onsubmit="return fnChecked(this)"> <!-- 안에 값이 FALSE면 멈추고 TRUE면 전송한다 -->
+		이름 : <input type="text" name="irum" required/><br><br>
+		아이디 : <input type="text" name="id"/><br><br>
+		암호 : <input type="password" name="pw1"/><br><br>
+		암호확인 : <input type="password" name="pw2"/><br><br>
+		E-mail : <input type="text" name="email"/><br><br>
+		카드번호 : <input type="text" name="cardNum"/><br><br>
+		주민번호 : <input type="text" name="ssn1" size="6"/>
+			- <input type="text" name="ssn2" size="7"/>
+		<br><br>
+		<!--submit으로 하면 잘되던 잘못되어도 서버로 넘어가버리니까 붙잡아야한다.-->
+		<!--<input type="button" value="전송" onclick="isEmpty(this.f1)"/>-->
+		<input type="submit" value="전송"/>
+	</form>
+</body>
+</html>
